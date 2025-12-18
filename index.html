@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Extras Social Strategy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --hx-purple: #542E91;
+            --hx-yellow: #FDDC06;
+            --hx-white: #FFFFFF;
+            --hx-off-white: #F0F0F0;
+            --hx-black: #232323;
+            --hx-blue: #3AA6FF;
+            --hx-green: #00B0A6;
+            --hx-orange: #FFB55F;
+            --hx-red: #FF5F68;
+            --hx-violet: #925FFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--hx-purple) 0%, #3d2069 50%, #2a1549 100%);
+            color: var(--hx-black);
+            line-height: 1.6;
+            padding: 60px 20px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(253, 220, 6, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(58, 166, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--hx-white);
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 5px 10px rgba(0,0,0,0.4);
+            letter-spacing: -1px;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .pillar {
+            background: var(--hx-white);
+            border-radius: 28px;
+            padding: 0;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            overflow: visible;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border-top: 8px solid var(--hx-yellow);
+            position: relative;
+        }
+
+        .pillar:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.6);
+        }
+
+        .pillar-header {
+            padding: 45px 35px;
+            color: var(--hx-white);
+            font-weight: 900;
+            font-size: 2.1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.5px;
+            background: var(--hx-purple);
+        }
+
+        /* Animated gradient overlay on headers */
+        .pillar-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .pillar-header span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-header .bold-part {
+            font-weight: 900;
+        }
+
+        /* Pillar-specific accent colors */
+        .pillar:nth-child(1) {
+            border-top-color: var(--hx-blue);
+        }
+
+        .pillar:nth-child(1) .pillar-header {
+            background: linear-gradient(135deg, var(--hx-purple) 0%, var(--hx-blue) 100%);
+        }
+
+        .pillar:nth-child(2) {
+            border-top-color: var(--hx-orange);
+        }
+
+        .pillar:nth-child(2) .pillar-header {
+            background: linear-gradient(135deg, var(--hx-purple) 0%, var(--hx-orange) 100%);
+        }
+
+        .pillar:nth-child(3) {
+            border-top-color: var(--hx-green);
+        }
+
+        .pillar:nth-child(3) .pillar-header {
+            background: linear-gradient(135deg, var(--hx-purple) 0%, var(--hx-green) 100%);
+        }
+
+        .pillar-content {
+            padding: 35px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-section {
+            margin-bottom: 28px;
+            padding-bottom: 22px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid rgba(84, 46, 145, 0.08);
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .content-section.purpose-section {
+            min-height: 145px;
+        }
+
+        .content-section.audience-section {
+            min-height: 180px;
+        }
+
+        .content-section.tone-must-section {
+            min-height: 145px;
+        }
+
+        .content-section.tone-filters-section {
+            min-height: 135px;
+        }
+
+        .content-section.brand-section {
+            min-height: 80px;
+        }
+
+        .content-section.channels-section {
+            min-height: 200px;
+        }
+
+        .content-section.content-section-area {
+            min-height: 220px;
+        }
+
+        .content-section.kpis-section {
+            min-height: 145px;
+        }
+
+        .content-section.risk-section {
+            min-height: 95px;
+        }
+
+        .content-section.output-section {
+            min-height: 220px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label i {
+            font-size: 1rem;
+        }
+
+        .pillar:nth-child(1) .section-label {
+            color: var(--hx-blue);
+        }
+
+        .pillar:nth-child(2) .section-label {
+            color: var(--hx-orange);
+        }
+
+        .pillar:nth-child(3) .section-label {
+            color: var(--hx-green);
+        }
+
+        .section-value {
+            font-size: 0.95rem;
+            color: var(--hx-black);
+            line-height: 1.7;
+        }
+
+        .section-value strong {
+            color: var(--hx-purple);
+            font-weight: 800;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            color: var(--hx-white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .tag:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .pillar:nth-child(1) .tag {
+            background: linear-gradient(135deg, var(--hx-blue) 0%, #2a8fd9 100%);
+        }
+
+        .pillar:nth-child(2) .tag {
+            background: linear-gradient(135deg, var(--hx-orange) 0%, #ff9933 100%);
+        }
+
+        .pillar:nth-child(3) .tag {
+            background: linear-gradient(135deg, var(--hx-green) 0%, #009688 100%);
+        }
+
+        .risk-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--hx-white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .risk-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .risk-high {
+            background: linear-gradient(135deg, var(--hx-red) 0%, #e63946 100%);
+        }
+
+        .risk-medium {
+            background: linear-gradient(135deg, var(--hx-orange) 0%, #ff9933 100%);
+        }
+
+        .risk-low {
+            background: linear-gradient(135deg, var(--hx-blue) 0%, #2a8fd9 100%);
+        }
+
+        .purpose-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 600;
+            color: var(--hx-black);
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .social-icon.youtube {
+            background: #FF0000;
+        }
+
+        .social-icon.facebook {
+            background: #1877F2;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-icon.tiktok {
+            background: #000000;
+        }
+
+        .social-icon.email {
+            background: var(--hx-purple);
+        }
+
+        .social-icon.app {
+            background: linear-gradient(135deg, var(--hx-violet) 0%, var(--hx-purple) 100%);
+        }
+
+        .social-icon.website {
+            background: linear-gradient(135deg, var(--hx-blue) 0%, var(--hx-green) 100%);
+        }
+
+        .social-icon.reefspace {
+            background: linear-gradient(135deg, #00B0A6 0%, #008B82 100%);
+        }
+
+        .social-icon.hx-logo {
+            background: var(--hx-purple);
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: -0.5px;
+        }
+
+        .channel-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .channel-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .output-highlight {
+            background: var(--hx-off-white);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            color: var(--hx-black);
+            font-size: 0.95rem;
+            border-left: 4px solid var(--hx-purple);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .output-highlight:last-child {
+            margin-bottom: 0;
+        }
+
+        .output-label {
+            font-weight: 800;
+            color: var(--hx-purple);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* Content subsections with category labels */
+        .content-category {
+            margin-bottom: 15px;
+        }
+
+        .category-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .category-label.customer {
+            color: var(--hx-purple);
+        }
+
+        .category-label.other {
+            color: var(--hx-black);
+            opacity: 0.6;
+        }
+
+        .content-category-text {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--hx-black);
+        }
+
+        /* Yellow accent corner */
+        .pillar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 30px;
+            width: 100px;
+            height: 8px;
+            background: var(--hx-yellow);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 10px rgba(253, 220, 6, 0.4);
+        }
+
+        @media (max-width: 1400px) {
+            .pillars-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar {
+                max-width: 650px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .strapline {
+                font-size: 1.3rem;
+            }
+
+            body {
+                padding: 30px 15px;
+            }
+
+            .content-section {
+                min-height: auto;
+            }
+        }
+
+        /* Fade in animation on load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pillar {
+            animation: fadeInUp 0.7s ease-out forwards;
+            opacity: 0;
+        }
+
+        .pillar:nth-child(1) {
+            animation-delay: 0.15s;
+        }
+
+        .pillar:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .pillar:nth-child(3) {
+            animation-delay: 0.45s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Holiday Extras Social Strategy</h1>
+            <p class="subtitle">Three Strategic Pillars</p>
+        </div>
+
+        <div class="pillars-container">
+            <!-- Pillar 1: Make People Notice Us -->
+            <div class="pillar">
+                <div class="pillar-header">
+                    <span>Make People<br><strong class="bold-part">Notice Us</strong></span>
+                </div>
+                <div class="pillar-content">
+                    <div class="content-section purpose-section">
+                        <div class="section-label">
+                            <i class="fas fa-bullseye"></i> PURPOSE
+                        </div>
+                        <div class="section-value purpose-text">
+                            Create bold, attention-grabbing content that breaks into culture, earns reach at scale and makes us impossible to ignore.
+                        </div>
+                    </div>
+
+                    <div class="content-section audience-section">
+                        <div class="section-label">
+                            <i class="fas fa-users"></i> AUDIENCE
+                        </div>
+                        <div class="section-value">
+                            Cold audiences who do not know us or do not notice us, and who need unmissable, entertaining content to pull them into our world.
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-must-section">
+                        <div class="section-label">
+                            <i class="fas fa-fire"></i> TONE MUST HAVES
+                        </div>
+                        <div class="tags">
+                            <span class="tag">WTF Energy</span>
+                            <span class="tag">Fun</span>
+                            <span class="tag">Relevant</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-filters-section">
+                        <div class="section-label">
+                            <i class="fas fa-filter"></i> TONE FILTERS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Irreverent</span>
+                            <span class="tag">Unexpected</span>
+                            <span class="tag">Cheeky</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section brand-section">
+                        <div class="section-label">
+                            <i class="fas fa-tag"></i> BRAND
+                        </div>
+                        <div class="section-value">
+                            <strong>HEHA, HX</strong>
+                        </div>
+                    </div>
+
+                    <div class="content-section channels-section channel-section">
+                        <div class="channel-row">
+                            <div class="section-label">
+                                <i class="fas fa-broadcast-tower"></i> CHANNELS
+                            </div>
+                            <div class="social-icons">
+                                <div class="social-icon youtube" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <div class="social-icon tiktok" title="TikTok">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                                <div class="social-icon instagram" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="social-icon facebook" title="Facebook (amplify big swings)">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section content-section-area">
+                        <div class="section-label">
+                            <i class="fas fa-photo-video"></i> CONTENT
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label customer">Customer:</span>
+                            <div class="content-category-text">
+                                Challenges, competitions, stunts and beefs
+                            </div>
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label other">Other:</span>
+                            <div class="content-category-text">
+                                Content for external talks
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section kpis-section">
+                        <div class="section-label">
+                            <i class="fas fa-chart-line"></i> KPIS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">AVD</span>
+                            <span class="tag">Reach</span>
+                            <span class="tag">Shares</span>
+                            <span class="tag">Brand Recognition</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section risk-section">
+                        <div class="section-label">
+                            <i class="fas fa-exclamation-triangle"></i> RISK APPETITE
+                        </div>
+                        <div class="section-value">
+                            <span class="risk-badge risk-high">High</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section output-section">
+                        <div class="section-label">
+                            <i class="fas fa-calendar-alt"></i> ANNUAL OUTPUT
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Customer</span>
+                            10 big swings, 25 smaller swings, plus ad hoc weekly trend content
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Other</span>
+                            Ad hoc
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Make People Want Us -->
+            <div class="pillar">
+                <div class="pillar-header">
+                    <span>Make People<br><strong class="bold-part">Want Us</strong></span>
+                </div>
+                <div class="pillar-content">
+                    <div class="content-section purpose-section">
+                        <div class="section-label">
+                            <i class="fas fa-bullseye"></i> PURPOSE
+                        </div>
+                        <div class="section-value purpose-text">
+                            Produce clear, creative, value-led content that shows why HX is the smart choice and moves people towards taking action.
+                        </div>
+                    </div>
+
+                    <div class="content-section audience-section">
+                        <div class="section-label">
+                            <i class="fas fa-users"></i> AUDIENCE
+                        </div>
+                        <div class="section-value">
+                            Travellers with intent - from curious to comparison-shopping - who need simple, creative clarity to understand the value of HX.<br>
+                            Potential partners on the fence, or prospective employees.
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-must-section">
+                        <div class="section-label">
+                            <i class="fas fa-fire"></i> TONE MUST HAVES
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Valuable</span>
+                            <span class="tag">Fun</span>
+                            <span class="tag">Clear</span>
+                            <span class="tag">Confident</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-filters-section">
+                        <div class="section-label">
+                            <i class="fas fa-filter"></i> TONE FILTERS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Irreverent</span>
+                            <span class="tag">Unexpected</span>
+                            <span class="tag">Cheeky</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section brand-section">
+                        <div class="section-label">
+                            <i class="fas fa-tag"></i> BRAND
+                        </div>
+                        <div class="section-value">
+                            <strong>HX</strong>
+                        </div>
+                    </div>
+
+                    <div class="content-section channels-section channel-section">
+                        <div class="channel-row">
+                            <div class="section-label">
+                                <i class="fas fa-broadcast-tower"></i> CHANNELS
+                            </div>
+                            <div class="social-icons">
+                                <div class="social-icon hx-logo" title="HX.com">
+                                    HX
+                                </div>
+                                <div class="social-icon facebook" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <div class="social-icon tiktok" title="TikTok">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                                <div class="social-icon instagram" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section content-section-area">
+                        <div class="section-label">
+                            <i class="fas fa-photo-video"></i> CONTENT
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label customer">Customer:</span>
+                            <div class="content-category-text">
+                                Product content, explainers, hacks, competitions, promotions
+                            </div>
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label other">Other:</span>
+                            <div class="content-category-text">
+                                Employer brand content, partner pitch content
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section kpis-section">
+                        <div class="section-label">
+                            <i class="fas fa-chart-line"></i> KPIS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Clicks</span>
+                            <span class="tag">Conversions</span>
+                            <span class="tag">Lead Gen</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section risk-section">
+                        <div class="section-label">
+                            <i class="fas fa-exclamation-triangle"></i> RISK APPETITE
+                        </div>
+                        <div class="section-value">
+                            <span class="risk-badge risk-medium">Medium</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section output-section">
+                        <div class="section-label">
+                            <i class="fas fa-calendar-alt"></i> ANNUAL OUTPUT
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Customer</span>
+                            Weekly promotions to gain bookings and leads
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Other</span>
+                            Ad hoc
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Make People Care -->
+            <div class="pillar">
+                <div class="pillar-header">
+                    <span>Make People<br><strong class="bold-part">Care</strong></span>
+                </div>
+                <div class="pillar-content">
+                    <div class="content-section purpose-section">
+                        <div class="section-label">
+                            <i class="fas fa-bullseye"></i> PURPOSE
+                        </div>
+                        <div class="section-value purpose-text">
+                            Turn customers into fans through distinct, personality-driven content that builds real attachment to HX.
+                        </div>
+                    </div>
+
+                    <div class="content-section audience-section">
+                        <div class="section-label">
+                            <i class="fas fa-users"></i> AUDIENCE
+                        </div>
+                        <div class="section-value">
+                            The people already in our orbit who need consistent, useful content that keeps them close and coming back.
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-must-section">
+                        <div class="section-label">
+                            <i class="fas fa-fire"></i> TONE MUST HAVES
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Informative</span>
+                            <span class="tag">Meaningful</span>
+                            <span class="tag">Relevant</span>
+                            <span class="tag">Fun</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section tone-filters-section">
+                        <div class="section-label">
+                            <i class="fas fa-filter"></i> TONE FILTERS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Irreverent</span>
+                            <span class="tag">Unexpected</span>
+                            <span class="tag">Cheeky</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section brand-section">
+                        <div class="section-label">
+                            <i class="fas fa-tag"></i> BRAND
+                        </div>
+                        <div class="section-value">
+                            <strong>HEHA</strong>
+                        </div>
+                    </div>
+
+                    <div class="content-section channels-section channel-section">
+                        <div class="channel-row">
+                            <div class="section-label">
+                                <i class="fas fa-broadcast-tower"></i> CHANNELS
+                            </div>
+                            <div class="social-icons">
+                                <div class="social-icon email" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="social-icon app" title="App">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="social-icon facebook" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <div class="social-icon tiktok" title="TikTok">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                                <div class="social-icon instagram" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="social-icon youtube" title="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <div class="social-icon reefspace" title="Reefspace">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section content-section-area">
+                        <div class="section-label">
+                            <i class="fas fa-photo-video"></i> CONTENT
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label customer">Customer:</span>
+                            <div class="content-category-text">
+                                Personalised videos, behind the scenes, travel trials, horror stories, Q&A
+                            </div>
+                        </div>
+                        <div class="content-category">
+                            <span class="category-label other">Other:</span>
+                            <div class="content-category-text">
+                                Partner Day, partner relationship content, HXTV, HX Connect
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section kpis-section">
+                        <div class="section-label">
+                            <i class="fas fa-chart-line"></i> KPIS
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Repeat Bookings</span>
+                            <span class="tag">Positive Sentiment</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section risk-section">
+                        <div class="section-label">
+                            <i class="fas fa-exclamation-triangle"></i> RISK APPETITE
+                        </div>
+                        <div class="section-value">
+                            <span class="risk-badge risk-low">Low</span>
+                        </div>
+                    </div>
+
+                    <div class="content-section output-section">
+                        <div class="section-label">
+                            <i class="fas fa-calendar-alt"></i> ANNUAL OUTPUT
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Customer</span>
+                            Weekly informational posting and 1:1 personalised trip content
+                        </div>
+                        <div class="output-highlight">
+                            <span class="output-label">Other</span>
+                            HXTV x10/year, HX Connect x2, Partner Day x1, partner ABR reviews ad hoc
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
